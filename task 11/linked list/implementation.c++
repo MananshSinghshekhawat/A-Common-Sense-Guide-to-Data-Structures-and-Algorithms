@@ -78,6 +78,47 @@ public:
         delete temp;
     }
 
+ void pop_back()
+{
+    if(Head == NULL)
+    {
+        cout << "Linked List is empty \n";
+        return;
+    }
+     Node *temp = Head;
+    while(temp->next != Tail)
+        {
+            temp = temp->next;
+        }
+
+    temp->next = NULL;
+    delete Tail;
+    Tail =  temp;
+}
+
+void insert(int value , int pos )
+{
+    if(pos < 0)
+    {
+        cout << "invalid pos\n";
+        return ;
+    }
+    if(pos == 0)
+    {
+        pop_front(value);
+        return;
+    }
+     Node *temp = Head;
+    for(int i = 0; i < pos-1; i++ )
+        {
+              temp = temp->next;
+        }
+    
+     Node *newNode = new Node(value);
+    newNode->next = temp->next;
+    temp = temp->next;
+}
+
     void printll()
     {
         Node *temp;
@@ -90,6 +131,23 @@ public:
 
         cout << "NULL" << endl;
     }
+
+int search(int key)
+{
+     Node *temp = Head;
+    int Idx = 0;
+    while(temp != Null)
+        {
+            if(temp->data == key)
+            {
+                return Idx;
+            }
+            temp = temp->next; 
+            Idx++;
+        }
+    return -1;
+}
+
 };
 
 int main()
@@ -108,6 +166,10 @@ int main()
     ll.pop_front();
 
     ll.printll();
+    ll.pop_back();
+    ll.insert(7,5);
+    ll.printll();
+    cout << search(5) << endl;
 
     return 0;
 }
