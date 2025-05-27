@@ -1,4 +1,4 @@
-// here i will show the time and space complexity of all the data structure and all the algorithms 
+/* here i will show the time and space complexity of all the data structure and all the algorithms */
 
 
 /*
